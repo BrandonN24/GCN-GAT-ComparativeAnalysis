@@ -1,4 +1,4 @@
-# Comparative Analysis of Graph Convolutional Network and Graph Attention Transformer Project
+# Comparative Analysis of Graph Convolutional Network and Graph Attention Network Project
 
 To run:
 use `python main.py`
