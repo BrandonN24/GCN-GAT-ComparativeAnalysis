@@ -1,0 +1,1 @@
+# This folder stores the datasets to be used in the training scripts
