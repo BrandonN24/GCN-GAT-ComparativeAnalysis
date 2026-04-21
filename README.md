@@ -4,4 +4,7 @@ To run:
 use `python main.py`
 
 Required dependencies:
-To be written...
+`pytest`
+`pytorch`
+`torch_geometric`
+`numpy`
