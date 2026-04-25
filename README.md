@@ -8,3 +8,5 @@ Required dependencies:
 `pytorch`
 `torch_geometric`
 `numpy`
+
+# Simon Bruce
