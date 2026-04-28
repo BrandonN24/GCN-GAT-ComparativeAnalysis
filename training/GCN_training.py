@@ -1,22 +1,7 @@
 import networks.GCN as GCN
+from utils import plot_acc, test_model
 import utils.plot_loss as plot_loss
 import torch
-
-def test_model(model, data):
-    model.eval() # Set the model to evaluation mode
-
-    # Compute the output of the model on the input data.
-    out = model(data)
-
-    # Get the predicted class by taking the argmax of the output.
-    pred = out.argmax(dim=1)
-
-    # Calculate the accuracy by comparing the predicted classes to the true labels for the test set.
-    correct = (pred[data.test_mask] == data.y[data.test_mask]).sum()
-    acc = int(correct) / int(data.test_mask.sum())
-    print(f'Test Accuracy: {acc:.4f}')
-
-    return
 
 def GCN_two_layer_training(data, num_classes, epochs=200, dataset_name=''):
     
@@ -31,6 +16,7 @@ def GCN_two_layer_training(data, num_classes, epochs=200, dataset_name=''):
 
     # Create a loss list to store the loss values for each epoch.
     loss_list = []
+    acc_list = []
 
     # Training the model for a specified number of epochs (e.g., 200).
     for epoch in range(epochs):
@@ -53,10 +39,18 @@ def GCN_two_layer_training(data, num_classes, epochs=200, dataset_name=''):
         # Append the loss value to the loss list for tracking.
         loss_list.append(loss.item())
 
+        # Append the accuracy value to the accuracy list for tracking.
+        pred = out.argmax(dim=1)
+        correct = (pred[data.train_mask] == data.y[data.train_mask]).sum()
+        acc = int(correct) / int(data.train_mask.sum())
+        acc_list.append(acc)
+
+    # Plot the loss and accuracy curves for the training process.
     plot_loss.plot_loss(loss_list, epochs, 'GCN Two Layer', dataset_name)
+    plot_acc.plot_acc(acc_list, epochs, 'GCN Two Layer', dataset_name)
 
     # Begin testing phase
-    test_model(model, data)
+    test_model.test_model(model, data, model_name='GCN Two Layer', dataset_name=dataset_name)
 
     return
 
@@ -72,6 +66,8 @@ def GCN_three_layer_training(data, num_classes, epochs=200, dataset_name=''):
 
     # Create a loss list to store the loss values for each epoch.
     loss_list = []
+    # Create an accuracy list to store the accuracy values for each epoch.
+    acc_list = []
 
     # Training the model for a specified number of epochs (e.g., 200).
     for epoch in range(epochs):
@@ -93,10 +89,17 @@ def GCN_three_layer_training(data, num_classes, epochs=200, dataset_name=''):
 
         # Append the loss value to the loss list for tracking.
         loss_list.append(loss.item())
+        # Append the accuracy value to the accuracy list for tracking.
+        pred = out.argmax(dim=1)
+        correct = (pred[data.train_mask] == data.y[data.train_mask]).sum()
+        acc = int(correct) / int(data.train_mask.sum())
+        acc_list.append(acc)
 
+    # Plot the loss and accuracy curves for the training process.
     plot_loss.plot_loss(loss_list, epochs, 'GCN Three Layer', dataset_name)
+    plot_acc.plot_acc(acc_list, epochs, 'GCN Three Layer', dataset_name)
 
     # Begin testing phase
-    test_model(model, data)
+    test_model.test_model(model, data, model_name='GCN Three Layer', dataset_name=dataset_name)
 
     return
