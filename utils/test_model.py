@@ -28,7 +28,7 @@ def test_model(model, data, model_name='', dataset_name=''):
     print(f'Classification Report:\n{report}')
 
     # Write the report to a text file for record-keeping.
-    with open(f'accuracy_reports/{model_name}_{dataset_name}_classification_report.txt', 'w') as f:
+    with open(f'accuracy_reports/{model_name.replace(" ", "_")}_{dataset_name}_classification_report.txt', 'w') as f:
         f.write(report)
 
     return
