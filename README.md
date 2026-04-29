@@ -3,10 +3,12 @@
 To run:
 use `python main.py`
 
-Required dependencies:
-`pytest`
-`pytorch`
-`torch_geometric`
-`numpy`
+Required dependencies:  
+`pytest`  
+`pytorch`  
+`torch_geometric`  
+`numpy`  
+`scikit-learn`  
+`matplotlib`
 
-# Simon Bruce
+Authors: Simon Bruce & Brandon Nguyen

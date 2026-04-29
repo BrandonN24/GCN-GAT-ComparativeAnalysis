@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Inputs:
+# - loss_list: A list of loss values recorded during training.
+# - epochs: The total number of epochs for which the model was trained.
+# - title: The title for the plot, indicating the model and configuration.
+# - dataset_name: The name of the dataset used for training, to be included in the plot title and filename.
+def plot_acc(acc_list, epochs, title, dataset_name):
+    plt.figure(figsize=(10, 5))
+    plt.plot(range(epochs), acc_list, label='Training Accuracy')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.title(f'{title} - {dataset_name}')
+    plt.legend()
+    plt.grid()
+    plt.savefig(f'figures/{title.replace(" ", "_")}_{dataset_name}_acc_plot.png')
+
+    return
