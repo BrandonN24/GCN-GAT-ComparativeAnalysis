@@ -1,5 +1,6 @@
 import sklearn.metrics as metrics
 import utils.plot_confusion_matrix as plot_confusion_matrix
+import utils.graph_vis as gv
 
 # Define a function to test the model on the test set and evaluate its performance.
 def test_model(model, data, model_name='', dataset_name=''):
@@ -14,11 +15,11 @@ def test_model(model, data, model_name='', dataset_name=''):
     # Calculate the accuracy by comparing the predicted classes to the true labels for the test set.
     correct = (pred[data.test_mask] == data.y[data.test_mask]).sum()
     acc = int(correct) / int(data.test_mask.sum())
-    print(f'Test Accuracy: {acc:.4f}')\
+    print(f'\nTest Accuracy: {acc:.4f}\n')\
     
     # Calculate the confusion matrix for the test set.
     cm = metrics.confusion_matrix(data.y[data.test_mask].cpu(), pred[data.test_mask].cpu())
-    print(f'Confusion Matrix:\n{cm}')
+    print(f'Confusion Matrix:\n{cm}\n')
 
     # Plot the confusion matrix using the utility function.
     plot_confusion_matrix.plot_confusion_matrix(cm, classes=range(data.y.max().item() + 1), title=f'{model_name} Confusion Matrix', dataset_name=dataset_name)
@@ -30,5 +31,9 @@ def test_model(model, data, model_name='', dataset_name=''):
     # Write the report to a text file for record-keeping.
     with open(f'accuracy_reports/{model_name.replace(" ", "_")}_{dataset_name}_classification_report.txt', 'w') as f:
         f.write(report)
+
+    # Visualize the true labels and predicted labels on the graph of the dataset.
+    print(f'Visualizing true labels and predicted labels for {dataset_name} using {model_name}...')
+    gv.visualize_graph_labels(data, pred, model_name, dataset_name)
 
     return
