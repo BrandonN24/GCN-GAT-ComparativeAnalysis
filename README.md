@@ -9,7 +9,7 @@ Required dependencies:
 `torch_geometric`  
 `numpy`  
 `scikit-learn`  
-`matplotlib`
-`networkx`
+`matplotlib`  
+`networkx`  
 
 Authors: Simon Bruce & Brandon Nguyen
