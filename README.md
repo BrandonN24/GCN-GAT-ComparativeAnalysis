@@ -10,5 +10,6 @@ Required dependencies:
 `numpy`  
 `scikit-learn`  
 `matplotlib`
+`networkx`
 
 Authors: Simon Bruce & Brandon Nguyen
