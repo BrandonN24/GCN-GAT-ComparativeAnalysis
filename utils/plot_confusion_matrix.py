@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # - title: The title for the plot, indicating the model and configuration.
 # - dataset_name: The name of the dataset used for training, to be included in the plot title and filename.
 def plot_confusion_matrix(cm, classes, title, dataset_name):
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(4, 3))
     plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
     plt.title(f'{title} - {dataset_name}')
     plt.colorbar()
