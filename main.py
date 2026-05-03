@@ -3,6 +3,9 @@ import training.GAT_training as GAT_training
 import training.cora as cora
 import training.citeseer as citeseer
 
+GCN_EPOCHS = 300
+GAT_EPOCHS = 200
+
 def main():
 
     # Load the Cora dataset
@@ -17,24 +20,24 @@ def main():
     match model_choice:
         case '1':
             print("Training GCN Two Layer on Cora dataset...")
-            GCN_training.GCN_two_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            GCN_training.GCN_two_layer_training(cora_data, num_classes=cora_num_classes, epochs=GCN_EPOCHS, dataset_name='Cora')
             print("Training GCN Two Layer on Citeseer dataset...")
-            GCN_training.GCN_two_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
+            GCN_training.GCN_two_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=GCN_EPOCHS, dataset_name='Citeseer')
         case '2':
             print("Training GCN Three Layer on Cora dataset...")
-            GCN_training.GCN_three_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            GCN_training.GCN_three_layer_training(cora_data, num_classes=cora_num_classes, epochs=GCN_EPOCHS, dataset_name='Cora')
             print("Training GCN Three Layer on Citeseer dataset...")
-            GCN_training.GCN_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
+            GCN_training.GCN_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=GCN_EPOCHS, dataset_name='Citeseer')
         case '3':
             print("Training GAT Two Layer on Cora dataset...")
-            GAT_training.GAT_two_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            GAT_training.GAT_two_layer_training(cora_data, num_classes=cora_num_classes, epochs=GAT_EPOCHS, dataset_name='Cora')
             print("Training GAT Two Layer on Citeseer dataset...")
-            GAT_training.GAT_two_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
+            GAT_training.GAT_two_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=GAT_EPOCHS, dataset_name='Citeseer')
         case '4':
             print("Training GAT Three Layer on Cora dataset...")
-            GAT_training.GAT_three_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            GAT_training.GAT_three_layer_training(cora_data, num_classes=cora_num_classes, epochs=GAT_EPOCHS, dataset_name='Cora')
             print("Training GAT Three Layer on Citeseer dataset...")
-            GAT_training.GAT_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
+            GAT_training.GAT_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=GAT_EPOCHS, dataset_name='Citeseer')
         case _:
             print("Invalid choice. Please enter a number between 1 and 4.")
 

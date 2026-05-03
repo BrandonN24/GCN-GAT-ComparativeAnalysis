@@ -3,14 +3,18 @@ from utils import plot_acc, test_model
 import utils.plot_loss as plot_loss
 import torch
 
+HIDDEN_UNITS = 64
+LEARNING_RATE = 0.005
+
 def GCN_two_layer_training(data, num_classes, epochs=200, dataset_name=''):
     
     # instantiate the model
-    # Current implementation uses 64 hidden channels, but this can be adjusted as needed.
-    model = GCN.GCN_Two_Layer(data.num_features, 64, num_classes)
+    
+    # Current implementation uses HIDDEN_UNITS hidden channels, but this can be adjusted as needed.
+    model = GCN.GCN_Two_Layer(data.num_features, HIDDEN_UNITS, num_classes)
 
     # use an optimizer (e.g., Adam) to update the model parameters during training.
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=5e-4)
 
     model.train() # Set the model to training mode.
 
@@ -56,11 +60,11 @@ def GCN_two_layer_training(data, num_classes, epochs=200, dataset_name=''):
 
 def GCN_three_layer_training(data, num_classes, epochs=200, dataset_name=''):
     # instantiate the model
-    # Current implementation uses 64 hidden channels for the first two layers, and the final layer outputs the number of classes.
-    model = GCN.GCN_Three_Layer(data.num_features, 64, num_classes)
+    # Current implementation uses HIDDEN_UNITS hidden channels for the first two layers, and the final layer outputs the number of classes.
+    model = GCN.GCN_Three_Layer(data.num_features, HIDDEN_UNITS, num_classes)
 
     # use an optimizer (e.g., Adam) to update the model parameters during training.
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=5e-4)
 
     model.train() # Set the model to training mode.
 
