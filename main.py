@@ -1,4 +1,5 @@
 import training.GCN_training as GCN_training
+import training.GAT_training as GAT_training
 import training.cora as cora
 import training.citeseer as citeseer
 
@@ -25,9 +26,15 @@ def main():
             print("Training GCN Three Layer on Citeseer dataset...")
             GCN_training.GCN_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
         case '3':
-            print("GAT Two Layer training not implemented yet.")
+            print("Training GAT Two Layer on Cora dataset...")
+            GAT_training.GAT_two_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            print("Training GAT Two Layer on Citeseer dataset...")
+            GAT_training.GAT_two_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
         case '4':
-            print("GAT Three Layer training not implemented yet.")
+            print("Training GAT Three Layer on Cora dataset...")
+            GAT_training.GAT_three_layer_training(cora_data, num_classes=cora_num_classes, epochs=200, dataset_name='Cora')
+            print("Training GAT Three Layer on Citeseer dataset...")
+            GAT_training.GAT_three_layer_training(citeseer_data, num_classes=citeseer_num_classes, epochs=200, dataset_name='Citeseer')
         case _:
             print("Invalid choice. Please enter a number between 1 and 4.")
 
