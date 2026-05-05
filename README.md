@@ -11,5 +11,6 @@ Required dependencies:
 `scikit-learn`  
 `matplotlib`  
 `networkx`  
+`fa2` (ForceAtlas2)
 
 Authors: Simon Bruce & Brandon Nguyen
